@@ -1,3 +1,4 @@
+import CustomButton from "@/components/CustomButton";
 import { onboarding } from "@/constants";
 import { router } from "expo-router";
 import { useRef, useState } from "react";
@@ -37,11 +38,17 @@ const OnBoarding = () => {
               resizeMode="contain"
             />
             <View className="flex flex-row items-center justify-center w-full mt-10">
-              <Text>{item.title}</Text>
+              <Text className="text-black text-3xl font-bold mx-10 text-center">
+                {item.title}
+              </Text>
             </View>
+            <Text className="text-md font-JakartaSemiBold text-center text-[#858585] mx-10 mt-3">
+              {item.description}
+            </Text>
           </View>
         ))}
       </Swiper>
+      <CustomButton title="Next" className="w-11/12 mt-10" />
     </SafeAreaView>
   );
 };
