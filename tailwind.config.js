@@ -5,12 +5,12 @@ module.exports = {
     extend: {
       fontFamily: {
         Jakarta: ["Jakarta", "sans-serif"],
-        JakartaBold: ["Jakarta-Bold", "sans-serif"],
-        JakartaExtraBold: ["Jakarta-ExtraBold", "sans-serif"],
-        JakartaExtraLight: ["Jakarta-ExtraLight", "sans-serif"],
-        JakartaLight: ["Jakarta-Light", "sans-serif"],
-        JakartaMedium: ["Jakarta-Medium", "sans-serif"],
-        JakartaSemiBold: ["Jakarta-SemiBold", "sans-serif"],
+        JakartaBold: ["JakartaBold", "sans-serif"],
+        JakartaExtraBold: ["JakartaExtraBold", "sans-serif"],
+        JakartaExtraLight: ["JakartaExtraLight", "sans-serif"],
+        JakartaLight: ["JakartaLight", "sans-serif"],
+        JakartaMedium: ["JakartaMedium", "sans-serif"],
+        JakartaSemiBold: ["JakartaSemiBold", "sans-serif"],
       },
       colors: {
         primary: {

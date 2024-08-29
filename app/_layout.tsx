@@ -9,7 +9,14 @@ SplashScreen.preventAutoHideAsync().catch(console.warn);
 
 export default function RootLayout() {
   // Load custom fonts
-  const [fontsLoaded] = useFonts({});
+  const [fontsLoaded] = useFonts({
+    JakartaBold: require("../assets/fonts/PlusJakartaSansBold.ttf"),
+    JakartaExtraBold: require("../assets/fonts/PlusJakartaSansExtraBold.ttf"),
+    JakartaExtraLight: require("../assets/fonts/PlusJakartaSansExtraLight.ttf"),
+    JakartaLight: require("../assets/fonts/PlusJakartaSansLight.ttf"),
+    JakartaMedium: require("../assets/fonts/PlusJakartaSansMedium.ttf"),
+    JakartaSemiBold: require("../assets/fonts/PlusJakartaSansSemiBold.ttf"),
+  });
 
   // Define a function to handle hiding the splash screen
   const onLayoutRootView = useCallback(async () => {
