@@ -1,20 +1,22 @@
 import { ButtonProps } from "@/types/type";
 import React from "react";
 
-const getTextVariantStyle= (variant: ButtonProps["textVariant"]) => {
+import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
+
+const getTextVariantStyle = (variant: ButtonProps["textVariant"]) => {
   switch (variant) {
     case "primary":
       return "text-black";
+    case "secondary":
+      return "text-gray-100";
     case "danger":
-      return "bg-red-500";
+      return "bg-red-100";
     case "success":
-      return "bg-green-500";
+      return "bg-green-100";
     default:
-      return "bg-[#028ff]";
+      return "text-white";
   }
 };
-
-import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
 
 const getBgVariantStyle = (variant: ButtonProps["bgVariant"]) => {
   switch (variant) {
@@ -54,12 +56,13 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   <TouchableOpacity
     onPress={onPress}
     {...props}
-    className={`w-full rounded-full flex flex-row justify-center items-center shadow-md shadow-neutral-400/70 ${getBgVariantStyle(bgVariant)} ${className}`}
+    className={`w-full rounded-full flex flex-row justify-center p-3 mb-1 items-center shadow-md shadow-neutral-400/70 ${getBgVariantStyle(bgVariant)} ${className}`}
+    {...props}
   >
-      {IconLeft && <IconLeft />}
-      <Text className={`text-lg font-bold ${getTextVariantStyle(textVariant)}`}>
-        {title}
-      </Text>
+    {IconLeft && <IconLeft />}
+    <Text className={`text-lg font-bold ${getTextVariantStyle(textVariant)}`}>
+      {title}
+    </Text>
     {IconRight && <IconRight />}
   </TouchableOpacity>
 );
