@@ -1,13 +1,18 @@
+import { useSignIn } from "@clerk/clerk-expo";
+import { Link, router } from "expo-router";
+import { useCallback, useState } from "react";
+import { Alert, Image, ScrollView, Text, View } from "react-native";
+
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import OAuth from "@/components/OAuth";
 import { icons, images } from "@/constants";
-import { Link } from "expo-router";
-import { useState } from "react";
-import { Image, ScrollView, Text, View } from "react-native";
 
 const SignIn = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
 
   const onSignInPress = async () => {};
   return (
@@ -16,7 +21,7 @@ const SignIn = () => {
         <View className="relative w-full h-[230px]">
           <Image source={images.signUpCar} className="z-0 w-full h-[250px]" />
           <Text className="text-2xl text-black font-JakartaSemiBold absolute bottom-5 left-5">
-            Welcome
+            Welcome 👋
           </Text>
         </View>
         <View className="p-5">
@@ -24,6 +29,7 @@ const SignIn = () => {
             label="Email"
             placeholder="Enter your email"
             icon={icons.email}
+            textContentType="emailAddress"
             value={form.email}
             onChangeText={(value: string) => setForm({ ...form, email: value })}
           />
@@ -32,6 +38,7 @@ const SignIn = () => {
             placeholder="Enter your password"
             icon={icons.lock}
             secureTextEntry={true}
+            textContentType="password"
             value={form.password}
             onChangeText={(value: string) =>
               setForm({ ...form, password: value })
@@ -53,7 +60,6 @@ const SignIn = () => {
             <Text className="text-primary-500">Sign up</Text>
           </Link>
         </View>
-        {/* Verification Modal */}
       </View>
     </ScrollView>
   );

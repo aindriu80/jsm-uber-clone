@@ -1,15 +1,18 @@
+import "react-native-reanimated";
 import { Stack } from "expo-router";
+import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useCallback } from "react";
 import { useFonts } from "expo-font";
-import "react-native-reanimated";
+
+const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync().catch(console.warn);
 
 export default function RootLayout() {
   // Load custom fonts
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, error] = useFonts({
     JakartaBold: require("../assets/fonts/PlusJakartaSansBold.ttf"),
     JakartaExtraBold: require("../assets/fonts/PlusJakartaSansExtraBold.ttf"),
     JakartaExtraLight: require("../assets/fonts/PlusJakartaSansExtraLight.ttf"),
@@ -18,6 +21,21 @@ export default function RootLayout() {
     JakartaSemiBold: require("../assets/fonts/PlusJakartaSansSemiBold.ttf"),
   });
 
+  // useEffect(() => {
+  //   if (fontsLoaded || error) {
+  //     SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded, error]);
+  //
+  // if (!fontsLoaded && !error) {
+  //   return null;
+  // }
+
+  if (!publishableKey) {
+    throw new Error(
+      "Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env",
+    );
+  }
   // Define a function to handle hiding the splash screen
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -42,11 +60,15 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack onLayout={onLayoutRootView}>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-      <Stack.Screen name="(root)" options={{ headerShown: false }} />
-      <Stack.Screen name="+not-found" />
-    </Stack>
+    <ClerkProvider publishableKey={publishableKey}>
+      <ClerkLoaded>
+        <Stack onLayout={onLayoutRootView}>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(root)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+      </ClerkLoaded>
+    </ClerkProvider>
   );
 }
