@@ -14,13 +14,19 @@ SplashScreen.preventAutoHideAsync().catch(console.warn);
 export default function RootLayout() {
   // Load custom fonts
   const [fontsLoaded, error] = useFonts({
-    // JakartaBold: require("../assets/fonts/PlusJakartaSansBold.ttf"),
-    // JakartaExtraBold: require("../assets/fonts/PlusJakartaSansExtraBold.ttf"),
-    // JakartaExtraLight: require("../assets/fonts/PlusJakartaSansExtraLight.ttf"),
-    // JakartaLight: require("../assets/fonts/PlusJakartaSansLight.ttf"),
-    // JakartaMedium: require("../assets/fonts/PlusJakartaSansMedium.ttf"),
-    // JakartaSemiBold: require("../assets/fonts/PlusJakartaSansSemiBold.ttf"),
+    JakartaBold: require("../assets/fonts/PlusJakartaSansBold.ttf"),
+    JakartaExtraBold: require("../assets/fonts/PlusJakartaSansExtraBold.ttf"),
+    JakartaExtraLight: require("../assets/fonts/PlusJakartaSansExtraLight.ttf"),
+    JakartaLight: require("../assets/fonts/PlusJakartaSansLight.ttf"),
+    JakartaMedium: require("../assets/fonts/PlusJakartaSansMedium.ttf"),
+    JakartaSemiBold: require("../assets/fonts/PlusJakartaSansSemiBold.ttf"),
   });
+
+  useEffect(() => {
+    if (error) {
+      console.error("Error loading fonts:", error);
+    }
+  }, [error]);
 
   if (!publishableKey) {
     throw new Error(

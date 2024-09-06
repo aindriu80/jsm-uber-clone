@@ -120,9 +120,6 @@ const Home = () => {
         data={recentRides?.slice(0, 5)}
         renderItem={({ item }) => <RideCard ride={item} />}
       />
-      <SignedIn>
-        <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
-      </SignedIn>
     </SafeAreaView>
   );
 };
