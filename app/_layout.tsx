@@ -49,8 +49,7 @@ export default function RootLayout() {
     } else {
       console.log("Fonts not loaded yet.");
     }
-    // }, [fontsLoaded, onLayoutRootView]);
-  }, [error]);
+  }, [error, fontsLoaded, onLayoutRootView]);
 
   if (!fontsLoaded) {
     console.log("Fonts are not loaded yet.");
