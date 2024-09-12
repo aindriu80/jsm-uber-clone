@@ -82,8 +82,8 @@ export const calculateDriverTimes = async ({
   markers: MarkerData[];
   userLatitude: number | null;
   userLongitude: number | null;
-  destinationLatitude: number | null;
-  destinationLongitude: number | null;
+  destinationLatitude: number | 0;
+  destinationLongitude: number | 0;
 }) => {
   if (
     !userLatitude ||
