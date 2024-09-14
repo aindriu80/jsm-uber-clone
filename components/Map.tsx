@@ -3,13 +3,13 @@ import { useDriverStore, useLocationStore } from "@/store";
 import { calculateRegion, generateMarkersFromData } from "@/lib/Map";
 import { MarkerData } from "@/types/type";
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
 import { icons } from "@/constants";
 
 const drivers = [
   [
     {
       id: "1",
+      key: 31,
       first_name: "James",
       last_name: "Wilson",
       profile_image_url:
@@ -21,6 +21,7 @@ const drivers = [
     },
     {
       id: "2",
+      key: 32,
       first_name: "David",
       last_name: "Brown",
       profile_image_url:
@@ -32,6 +33,7 @@ const drivers = [
     },
     {
       id: "3",
+      key: 33,
       first_name: "Michael",
       last_name: "Johnson",
       profile_image_url:
@@ -43,6 +45,7 @@ const drivers = [
     },
     {
       id: "4",
+      key: 34,
       first_name: "Robert",
       last_name: "Green",
       profile_image_url:
@@ -101,7 +104,8 @@ const Map = () => {
     >
       {markers.map((marker) => (
         <Marker
-          key={marker.id}
+          key={`${marker.id}-${marker.latitude}-${marker.longitude}`}
+          // key={marker.id}
           coordinate={{
             latitude: marker.latitude,
             longitude: marker.longitude,
@@ -110,7 +114,7 @@ const Map = () => {
           image={
             selectedDriver === marker.id ? icons.selectedMarker : icons.marker
           }
-        ></Marker>
+        />
       ))}
     </MapView>
   );

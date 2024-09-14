@@ -74,6 +74,7 @@ export const icons = {
 export const onboarding = [
   {
     id: 1,
+    key: 11,
     title: "The perfect ride is just a tap away!",
     description:
       "Your journey begins with Ryde. Find your ideal ride effortlessly.",
@@ -81,6 +82,7 @@ export const onboarding = [
   },
   {
     id: 2,
+    key: 21,
     title: "Best car in your hands with Ryde",
     description:
       "Discover the convenience of finding your perfect ride with Ryde",
@@ -88,6 +90,7 @@ export const onboarding = [
   },
   {
     id: 3,
+    key: 31,
     title: "Your ride, your way. Let's go!",
     description:
       "Enter your destination, sit back, and let us take care of the rest.",

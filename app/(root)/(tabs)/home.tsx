@@ -132,11 +132,11 @@ const Home = () => {
 
   const handleSignOut = () => {};
 
-  const handleDestinationPress = (
-    latitude: number,
-    longitude: number,
-    address: string,
-  ) => {
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
     setDestinationLocation(location);
 
     router.push("/(root)/find-ride");
