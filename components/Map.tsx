@@ -99,21 +99,20 @@ const Map = () => {
       mapType="mutedStandard"
       showsPointsOfInterest={false}
       initialRegion={region}
-      showsUserLocation={true}
+      // showsUserLocation={true}
       userInterfaceStyle="light"
     >
-      {markers.map((marker) => (
+      {markers.map((marker, index) => (
         <Marker
-          key={`${marker.id}-${marker.latitude}-${marker.longitude}`}
-          // key={marker.id}
+          key={marker.id}
           coordinate={{
             latitude: marker.latitude,
             longitude: marker.longitude,
           }}
           title={marker.title}
-          image={
-            selectedDriver === marker.id ? icons.selectedMarker : icons.marker
-          }
+          // image={
+          //   selectedDriver === marker.id ? icons.selectedMarker : icons.marker
+          // }
         />
       ))}
     </MapView>
