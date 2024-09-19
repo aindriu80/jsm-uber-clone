@@ -32,6 +32,9 @@ importers:
       '@react-navigation/native':
         specifier: ^6.0.2
         version: 6.1.18(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      '@stripe/stripe-react-native':
+        specifier: ^0.38.6
+        version: 0.38.6(expo@51.0.32(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       expo:
         specifier: ~51.0.22
         version: 51.0.32(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))
@@ -113,6 +116,9 @@ importers:
       react-native-web:
         specifier: ~0.19.10
         version: 0.19.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      stripe:
+        specifier: ^16.12.0
+        version: 16.12.0
       zustand:
         specifier: ^4.5.5
         version: 4.5.5(@types/react@18.2.79)(react@18.2.0)
@@ -1600,6 +1606,16 @@ packages:
 
   '@sinonjs/fake-timers@10.3.0':
     resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
+
+  '@stripe/stripe-react-native@0.38.6':
+    resolution: {integrity: sha512-U6yELoRr4h4x+p9an0MiDXZBbm/FYNayPXJP0PtsR3iFVAGpGQm6DzM+cye2PVlhbDK8htBA5ReZ1YEFxT/hJA==}
+    peerDependencies:
+      expo: '>=46.0.9'
+      react: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      expo:
+        optional: true
 
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -4772,6 +4788,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
+  qs@6.13.0:
+    resolution: {integrity: sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==}
+    engines: {node: '>=0.6'}
+
   qs@6.9.7:
     resolution: {integrity: sha512-IhMFgUmuNpyRfxA90umL7ByLlgRXu6tIfKPpF5TmcfRLlLCckfP/g3IQmju6jjpu+Hh8rA+2p6A27ZSPOOHdKw==}
     engines: {node: '>=0.6'}
@@ -5376,6 +5396,10 @@ packages:
   strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
+
+  stripe@16.12.0:
+    resolution: {integrity: sha512-H7eFVLDxeTNNSn4JTRfL2//LzCbDrMSZ+2q1c7CanVWgK2qIW5TwS+0V7N9KcKZZNpYh/uCqK0PyZh/2UsaAtQ==}
+    engines: {node: '>=12.*'}
 
   strnum@1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
@@ -8273,6 +8297,13 @@ snapshots:
   '@sinonjs/fake-timers@10.3.0':
     dependencies:
       '@sinonjs/commons': 3.0.1
+
+  '@stripe/stripe-react-native@0.38.6(expo@51.0.32(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0)
+    optionalDependencies:
+      expo: 51.0.32(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))
 
   '@tootallnate/once@2.0.0': {}
 
@@ -11973,6 +12004,10 @@ snapshots:
     dependencies:
       react: 18.2.0
 
+  qs@6.13.0:
+    dependencies:
+      side-channel: 1.0.6
+
   qs@6.9.7: {}
 
   query-string@7.1.3:
@@ -12689,6 +12724,11 @@ snapshots:
   strip-json-comments@2.0.1: {}
 
   strip-json-comments@3.1.1: {}
+
+  stripe@16.12.0:
+    dependencies:
+      '@types/node': 22.5.4
+      qs: 6.13.0
 
   strnum@1.0.5: {}
 
