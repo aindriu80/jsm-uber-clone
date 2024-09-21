@@ -1,7 +1,11 @@
+import { useAuth } from "@clerk/clerk-expo";
 import { useStripe } from "@stripe/stripe-react-native";
 import React, { useState } from "react";
 import { Alert } from "react-native";
+
 import CustomButton from "@/components/CustomButton";
+import { fetchAPI } from "@/lib/fetch";
+import { useLocationStore } from "@/store";
 import { PaymentProps } from "@/types/type";
 
 const Payment = ({
@@ -12,7 +16,16 @@ const Payment = ({
   rideTime,
 }: PaymentProps) => {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
-  // const { userId } = useAuth();
+  const {
+    userAddress,
+    userLongitude,
+    userLatitude,
+    destinationLatitude,
+    destinationAddress,
+    destinationLongitude,
+  } = useLocationStore();
+
+  const { userId } = useAuth();
   const [success, setSuccess] = useState<boolean>(false);
 
   const openPaymentSheet = async () => {
