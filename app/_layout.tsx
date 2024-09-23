@@ -5,11 +5,14 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useCallback } from "react";
 import { useFonts } from "expo-font";
 import { tokenCache } from "@/lib/auth";
+import { LogBox } from "react-native";
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync().catch(console.warn);
+
+LogBox.ignoreLogs(["Warning: ..."]);
 
 export default function RootLayout() {
   // Load custom fonts
@@ -34,6 +37,7 @@ export default function RootLayout() {
     );
   }
   // Define a function to handle hiding the splash screen
+LogBox.ignoreLogs(["Clerk:"]);
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       console.log("Fonts loaded successfully.");
@@ -59,7 +63,7 @@ export default function RootLayout() {
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
       <ClerkLoaded>
-        <Stack onLayout={onLayoutRootView}>
+        <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="(root)" options={{ headerShown: false }} />
